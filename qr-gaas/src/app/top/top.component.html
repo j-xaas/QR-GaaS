@@ -1,4 +1,72 @@
-<p>QR Code Generator as a Contact Service</p>
 
+<div>
+  <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              About This Service
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div>
+            迷子/ペット/落とし物等の発見者と、保護者/所有者間の連絡手段を提供します。<br>
+            発見者に登録者の個人情報を見られる心配はございません。<br>
+            また、入力したデータは保存されません。煩わしいアカウント登録や料金は不要です。<br>
+            ①入力データに応じて連絡用フォーム画面のQRコードを生成<br>
+            ②発見者はQR Codeを読み取る事で専用の連絡フォームにアクセス<br>
+            ③現在地と状況を共有<br>
+            <!---ここら辺に図？-->
+          </div>
+  </mat-expansion-panel>
+</div>
+<br><br>
+<div fxLayoutAlign="center"><!---ボタンを大きくしたい-->
+  <a routerLink="../qr-form" class="buttontxt">
+  <button mat-raised-button class="topbutton">Generate QR Code</button><!--- color="primary"-->
+  </a>
+</div>
+<br>
 
-各種　メニューを表示予定
+<h3>　Usecase</h3>
+<div class="List" fxLayout="row wrap" fxLayoutAlign="space-evenly" fxLayoutGap="10px grid"><!---fxLayoutGapで折り返したコンポーネント間に空白を設ける-->
+  <div fxLayoutAlign="space-evenly">
+    <mat-card>
+        <mat-card-title>迷子</mat-card-title>
+        <mat-card-content>
+          大切なお子様の窮地に、即座に駆け付けられます<br>
+          現在地と状況を伝達するためのフォームを用意しましょう<br>
+        </mat-card-content>
+        <!----<img mat-card-image>-->
+    </mat-card>
+  </div>
+  <div>
+    <mat-card>
+      <mat-card-title>認知症患者</mat-card-title>
+      <mat-card-content>
+       大切なご家族が帰宅ルートを忘れてしまった際に<br>
+        <br>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div>
+    <mat-card>
+        <mat-card-title>ペット</mat-card-title>
+        <mat-card-content>
+          首輪に生成したQR Codeを付けましょう<br>
+          話せないペットの代わりに連絡手段を備えましょう。
+        </mat-card-content>
+    </mat-card>
+  </div>
+  <div>
+    <mat-card>
+        <mat-card-title>落とし物</mat-card-title>
+        <mat-card-content>
+          大切なものを無くした時の備えとして<br>
+          個人情報を直接書き込むリスクを抑えられます。
+        </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+<br>
+<br>
+<!----LINEでShareボタン--https://social-plugins.line.me/ja/how_to_install#lineitbutton-->
+<div class="line-it-button" data-lang="ja" data-type="share-a" data-ver="3" data-url="https://j-xaas.github.io" data-color="default" data-size="large" data-count="true" style="display: none;"></div>
+ <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>

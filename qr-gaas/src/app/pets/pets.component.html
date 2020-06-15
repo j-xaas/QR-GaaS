@@ -1,0 +1,25 @@
+<p>pets works!</p>
+
+
+<div class="List" fxLayout="row wrap" fxLayoutAlign="space-evenly">
+    <div>
+      <mat-card>
+          <mat-card-title>ペット情報</mat-card-title>
+          <mat-card-content>
+            <mat-form-field>
+              名前<input matInput name="name" >
+              住所<input matInput name="address">
+            </mat-form-field>
+            <button mat-flat-button><a routerLink="">Generate</a></button>
+          </mat-card-content>
+      </mat-card>
+    </div>
+    <div>
+      <mat-card-title>連絡先（以下の内容は発見者に表示されません）</mat-card-title>
+      <mat-card-content>
+          <mat-form-field>
+              <input matInput name="email" >
+            </mat-form-field>
+      </mat-card-content>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+name: AngularCICD ## workflow名を設定
+on:  ## workflowのTriggerを定義
+  push: ## push時に発火 他例) pull request
+    branches: ## 条件でmaster branchへのpushに限定
+      - master
+
+jobs: ## ここで実行するジョブを指定
+  build: ## buildという名目のジョブを定義
+    ## 実行環境 Github Actions提供の仮想サーバー
+    runs-on: ubuntu-latest ## Ubuntsの最新版環境を指定
+##    strategy: 可変にする場合
+##      matrix:
+##        node-version: [10.x, 12.x]
+    steps: ## ここで実行する処理/コマンドを定義
+    ## github actionsの環境にリポジトリのソースを持ってくる
+    - uses: actions/checkout@v2
+
+    ## Node.jsの環境構築が必要
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+    - name: Install dependencies
+      run: npm install
+    - name: angular install
+      run: npm install -g @angular/cli
+    ## -----CI(継続的インテグレーション)----
+    ## Buildするアクション
+    - name: Build ## アクション名
+      ## 実行するコマンド
+      run: ng build --prod ## npm run build:prod?
+
+    ## Github Actions環境(仮想サーバー)で処理実行後にpushする必要がある
+    - name: Push Build to Releases
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: "dist/angular-githubaction/*"
+        token: ${{ secrets.TOKEN }}
+
+    ## Testするアクション (公開actionがあったので保留)
+    ## - name: Run Tests ## アクション名
+
+    ## -----CD(継続的デプロイ)-----------
+    ## Deployするアクション (公開actionがあったので保留)
+    ##- name: Deploy to S3 ## アクション名
+    ##  run: 

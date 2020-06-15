@@ -1,0 +1,73 @@
+<div>
+<br>
+<div>
+  <mat-card>
+    <mat-card-header>
+    QR Form
+    </mat-card-header>
+    <mat-card-content>
+      <div>
+        入力したメールアドレス宛の緊急連絡用QR Codeを生成します。<br>
+        生成されたQR Code画像は、ご自由にお使いください。<br>
+        <a href="http://www.kitamura-print.com/photogoods/seal/">外部シールプリントサービス</a>
+      </div>
+      </mat-card-content>
+    </mat-card>
+</div>
+<br>
+<div>
+<mat-horizontal-stepper #stepper>
+  <mat-step label="e-mail address">
+    <div id="nameform" fxLayoutAlign="center">
+      <div>連絡用のアドレスを入力（必須）<br>発見者には開示されません。</div>
+      <mat-form-field>
+        <input matInput id="mail_input" placeholder="e-mail address to contact" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext  (click)="saveMail()">Next</button>
+      </div>
+    </div>
+  </mat-step>
+  <mat-step>
+    <div id="infoform" fxLayoutAlign="center">
+      <ng-template matStepLabel>more information</ng-template>
+      <div>発見者に開示する情報を入力（任意）</div>
+      <mat-form-field>
+        <textarea matInput id="more_info_input" placeholder="ex.) Name/Tell/Address"></textarea>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext (click)="saveMoreinfo()">Generate</button>
+      </div>
+    </div>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Generate QR</ng-template>
+    <!---ここにQRCodeを表示-->
+    <div id="qr-code" fxLayoutAlign="center">
+      <div>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?data=https://j-xaas.github.io&size=200x200&format=png&color=1d417a&bgcolor=f7f6eb" alt="QRコード">
+      </div>
+    </div>
+
+    <div fxLayoutAlign="center">
+      <a href="https://api.qrserver.com/v1/create-qr-code/?data=https://j-xaas.github.io&size=200x200&format=png&color=1d417a&bgcolor=f7f6eb" download>
+      <button mat-icon-button>
+        <mat-icon>file_download</mat-icon>
+      </button>
+      </a>
+        <button mat-button  href="http://www.kitamura-print.com/photogoods/seal/">
+            シール化
+        </button>
+        <button mat-icon-button onclick="window.print();">
+          <mat-icon>print</mat-icon>
+        </button>
+      </div>
+    <div fxLayoutAlign="space-evenly">
+      <button mat-button matStepperPrevious>Back</button>　　
+      <button mat-button (click)="stepper.reset()">　Reset</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
+</div>
+</div>

@@ -1,1 +1,22 @@
-<p>QR Code Generator as a Contact Service</p>Botton
+<!-- Toolbar -->
+<div>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row> <!--mattoolbar内の行を編集する際に必要-->
+      <button mat-button [matMenuTriggerFor]="menu">
+          <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu= "matMenu">
+        <!-- <mat-icon>menu</mat-icon> -->
+        <button mat-menu-item  routerLink="">Service Top</button>
+        <button mat-menu-item  routerLink="/qr-form">QR for Contact Service</button>
+        <button mat-menu-item  routerLink="/qr-form">Normal QR for Web</button>
+      </mat-menu>
+      <span style="margin: auto;"></span><!---余白調整-->
+      <span>QR Code Generator as a Contact Service</span>
+      <span style="margin: auto;"></span><!---余白調整-->
+      <a mat-icon-button routerLink="">
+        <mat-icon>home</mat-icon>
+      </a>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</div>
